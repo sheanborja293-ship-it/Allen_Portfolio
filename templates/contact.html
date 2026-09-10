@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Allen Shean — aspiring software developer and IT student. Explore web applications, mobile experiences, and thoughtful solutions.">
+    <meta property="og:title" content="Contact | Allen Shean">
+    <meta property="og:description" content="Creative thinking. Thoughtful code. Explore Allen Shean’s developer portfolio.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/static/images/profile.jpg">
+    <title>Contact | Allen Shean</title>
+    <link rel="icon" href="/static/images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/theme.js"></script>
+    <script src="/static/js/script.js" defer></script>
+    <script src="/static/js/page-transitions.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <!-- Navigation for this page -->
+    <header class="site-header">
+      <nav class="container nav" aria-label="Main navigation">
+        <a class="wordmark" href="/">allen<span>.</span></a>
+        <div class="nav-links" id="navigation">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/skills">Skills</a>
+          <a href="/projects">Projects</a>
+          <a href="/contact" class="active" aria-current="page">Contact</a>
+        </div>
+        <div class="nav-actions"><button class="icon-button theme-toggle" aria-label="Switch to light theme"><i class="bi bi-sun" aria-hidden="true"></i></button><a class="nav-contact" href="/contact">Let’s talk <span>↗</span></a><button class="icon-button menu-toggle" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-list" aria-hidden="true"></i></button></div>
+      </nav>
+    </header>
+    <!-- Page content -->
+    <main id="main">
+      <div class="container page-content">
+        <div class="page-heading">
+          <span class="eyebrow">GOOD THINGS START WITH A CONVERSATION</span>
+          <h1>Let’s make <span class="serif accent">something happen.</span></h1>
+          <p>Have a project, an opportunity, or just want to say hello? I’d love to hear from you.</p>
+        </div>
+        <div class="contact-grid">
+          <section>
+            <h2>A new connection.<br>A new possibility.</h2>
+            <p>I’m interested in internship opportunities, collaborative projects, and learning from people who love what they do.</p>
+            <div class="contact-detail">
+              <i class="bi bi-envelope" aria-hidden="true"></i>
+              <div>
+                <span>EMAIL</span>
+                <p><a href="mailto:sheanborja293@gmail.com">sheanborja293@gmail.com</a></p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <i class="bi bi-geo-alt" aria-hidden="true"></i>
+              <div>
+                <span>BASED IN</span>
+                <p>Philippines</p>
+              </div>
+            </div>
+            <div class="contact-detail">
+              <i class="bi bi-telephone" aria-hidden="true"></i>
+              <div>
+                <span>PHONE</span>
+                <p><a href="tel:+639518500345">09518500345</a></p>
+              </div>
+            </div>
+            <div class="contact-detail" id="facebook-contact">
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+              <div>
+                <span>FACEBOOK</span>
+                <p><a href="https://www.facebook.com/AllenGwapo143" target="_blank" rel="noopener noreferrer">Allen Shean Borja</a></p>
+              </div>
+            </div>
+            <div class="socials" aria-label="Social links">
+              <a href="https://github.com/sheanborja293-ship-it" target="_blank" rel="noopener noreferrer" aria-label="GitHub: sheanborja293-ship-it"><i class="bi bi-github" aria-hidden="true"></i></a>
+              <span class="social-placeholder" title="LinkedIn link coming soon" aria-label="LinkedIn link coming soon"><i class="bi bi-linkedin" aria-hidden="true"></i></span>
+              <a href="https://www.facebook.com/AllenGwapo143" target="_blank" rel="noopener noreferrer" aria-label="Facebook: Allen Shean Borja"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+              <a href="/contact" aria-label="Email Allen"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+            </div>
+            <p class="muted">Find me on Facebook as Allen Shean Borja, or give me a call.</p>
+          </section>
+          <section class="contact-panel">
+            <!-- Flask supplies validation feedback and the security token for this form. -->
+            {% for category, message in get_flashed_messages(with_categories=true) %}
+            <div class="flash {{ category }}" role="status">{{ message }}</div>
+            {% endfor %}
+            <form id="contact-form" method="post" action="/contact" data-recipient="sheanborja293@gmail.com">
+              <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+              <div class="form-row">
+                <div>
+                  <label for="name">Your name</label>
+                  <input id="name" name="name" placeholder="Alex Rivera" required maxlength="100" autocomplete="name" value="{{ values.get('name', '') }}">
+                </div>
+                <div>
+                  <label for="email">Email address</label>
+                  <input id="email" type="email" name="email" placeholder="alex@example.com" required maxlength="254" autocomplete="email" value="{{ values.get('email', '') }}">
+                </div>
+              </div>
+              <label for="subject">What’s on your mind?</label>
+              <input id="subject" name="subject" placeholder="Let’s work together" required maxlength="150" value="{{ values.get('subject', '') }}">
+              <label for="message">Your message</label>
+              <textarea id="message" name="message" rows="6" placeholder="Tell me a little about your idea…" required maxlength="5000">{{ values.get('message', '') }}</textarea>
+              <p class="form-note">Submitting opens your email app with this message ready to send.</p>
+              <button class="button primary" type="submit">Send message <span>↗</span></button>
+            </form>
+          </section>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="container footer">
+      <div>
+        <a class="wordmark" href="/">allen<span>.</span></a>
+        <p>Thoughtful code. Meaningful experiences.</p>
+      </div>
+      <div class="footer-links"><a href="/about">About</a><a href="/projects">Projects</a><a href="/contact">Contact</a></div>
+      <div class="socials" aria-label="Social links">
+        <a href="https://github.com/sheanborja293-ship-it" target="_blank" rel="noopener noreferrer" aria-label="GitHub: sheanborja293-ship-it"><i class="bi bi-github" aria-hidden="true"></i></a>
+        <span class="social-placeholder" title="LinkedIn link coming soon" aria-label="LinkedIn link coming soon"><i class="bi bi-linkedin" aria-hidden="true"></i></span>
+        <a href="https://www.facebook.com/AllenGwapo143" target="_blank" rel="noopener noreferrer" aria-label="Facebook: Allen Shean Borja"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+        <a href="/contact" aria-label="Email Allen"><i class="bi bi-envelope" aria-hidden="true"></i></a>
+      </div>
+      <div class="footer-bottom"><span>© <span id="year">2026</span> Allen Shean</span><span>Built with Python Flask <span class="accent">✦</span></span></div>
+    </footer>
+    <a class="back-top icon-button" href="#main" aria-label="Back to top">↑</a>
+    <dialog id="project-dialog">
+      <button class="icon-button close-dialog" aria-label="Close project details">×</button>
+      <span class="eyebrow">PROJECT OVERVIEW · SAMPLE CONCEPT</span>
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-description"></p>
+      <div class="tags" id="dialog-tech"></div>
+      <p class="muted">Source code and live demo links will be added when this project is published.</p>
+    </dialog>
+  </body>
+</html>
